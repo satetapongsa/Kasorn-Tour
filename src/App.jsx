@@ -1,5 +1,15 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import ScrollToTop from './components/ScrollToTop';
+import LandingPage from './pages/LandingPage';
+import TourListings from './pages/TourListings';
+import TourDetails from './pages/TourDetails';
+import AdminDashboard from './pages/AdminDashboard';
+import AdminBookings from './pages/AdminBookings';
+import AdminCustomers from './pages/AdminCustomers';
+import AdminAnalytics from './pages/AdminAnalytics';
+import LuxuryConcierge from './pages/LuxuryConcierge';
+import AboutUs from './pages/AboutUs';
 
 function AdminRoute({ element }) {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -56,16 +66,6 @@ function AdminRoute({ element }) {
     </div>
   );
 }
-import ScrollToTop from './components/ScrollToTop';
-import LandingPage from './pages/LandingPage';
-import TourListings from './pages/TourListings';
-import TourDetails from './pages/TourDetails';
-import AdminDashboard from './pages/AdminDashboard';
-import AdminBookings from './pages/AdminBookings';
-import AdminCustomers from './pages/AdminCustomers';
-import AdminAnalytics from './pages/AdminAnalytics';
-import LuxuryConcierge from './pages/LuxuryConcierge';
-import AboutUs from './pages/AboutUs';
 
 function App() {
   return (
