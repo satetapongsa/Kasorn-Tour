@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 
 export default function AdminLayout({ children }) {
   const location = useLocation();
+  const [isMobileSidebarOpen, setIsMobileSidebarOpen] = React.useState(false);
 
   const navLinks = [
     { name: 'Dashboard', path: '/admin', icon: 'dashboard' },
@@ -14,16 +15,31 @@ export default function AdminLayout({ children }) {
   return (
     <div className="bg-[#F8FAFC] min-h-screen text-slate-800 font-sans" style={{ fontFamily: '"Inter", sans-serif' }}>
       <div className="flex h-screen overflow-hidden">
+        
+        {/* Mobile Sidebar Overlay */}
+        {isMobileSidebarOpen && (
+          <div 
+            className="fixed inset-0 bg-slate-900/50 z-40 lg:hidden"
+            onClick={() => setIsMobileSidebarOpen(false)}
+          />
+        )}
+
         {/* Sidebar */}
-        <aside className="w-[260px] flex flex-col bg-white border-r border-slate-200 shrink-0">
-          <div className="h-[72px] px-6 flex items-center gap-3 shrink-0">
-            <Link to="/admin" className="size-10 bg-[#1A44F2] rounded-[10px] flex items-center justify-center text-white">
-              <span className="material-symbols-outlined text-[20px]">explore</span>
-            </Link>
-            <div>
-              <h1 className="text-[17px] font-bold leading-tight text-slate-900">Kasorn Tour</h1>
-              <p className="text-[13px] text-slate-500 font-medium">Admin Panel</p>
+        <aside className={`fixed lg:static inset-y-0 left-0 z-50 w-[260px] flex flex-col bg-white border-r border-slate-200 shrink-0 transition-transform duration-300 ease-in-out ${isMobileSidebarOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}`}>
+          <div className="h-[72px] px-6 flex items-center justify-between gap-3 shrink-0">
+            <div className="flex items-center gap-3">
+              <Link to="/admin" className="size-10 bg-[#1A44F2] rounded-[10px] flex items-center justify-center text-white">
+                <span className="material-symbols-outlined text-[20px]">explore</span>
+              </Link>
+              <div>
+                <h1 className="text-[17px] font-bold leading-tight text-slate-900">Kasorn Tour</h1>
+                <p className="text-[13px] text-slate-500 font-medium">Admin Panel</p>
+              </div>
             </div>
+            {/* Close button for mobile */}
+            <button className="lg:hidden text-slate-500 hover:text-slate-800" onClick={() => setIsMobileSidebarOpen(false)}>
+              <span className="material-symbols-outlined">close</span>
+            </button>
           </div>
           
           <nav className="flex-1 px-4 py-6 flex flex-col gap-1.5 overflow-y-auto">
@@ -33,6 +49,7 @@ export default function AdminLayout({ children }) {
                 <Link
                   key={link.name}
                   to={link.path}
+                  onClick={() => setIsMobileSidebarOpen(false)}
                   className={`flex items-center gap-3.5 px-4 py-3 rounded-[10px] text-[15px] transition-colors ${
                     isActive
                       ? 'bg-[#EEF2FF] text-[#1A44F2] font-semibold'
@@ -58,19 +75,34 @@ export default function AdminLayout({ children }) {
         {/* Main Area */}
         <div className="flex-1 flex flex-col overflow-hidden relative">
           {/* Header */}
-          <header className="h-[72px] bg-white border-b border-slate-200 flex items-center justify-between px-6 shrink-0 relative z-10">
-            {/* Search */}
-            <div className="relative w-full max-w-[360px] flex items-center">
-              <span className="material-symbols-outlined absolute left-3.5 text-slate-400 text-[20px]">search</span>
-              <input
-                className="w-full pl-11 pr-4 py-2.5 bg-[#F9FAFB] rounded-lg text-[14px] text-slate-700 outline-none focus:bg-slate-100 transition-colors"
-                placeholder="Search bookings, customers..."
-                type="text"
-              />
+          <header className="h-[72px] bg-white border-b border-slate-200 flex items-center justify-between px-4 sm:px-6 shrink-0 relative z-10 gap-4">
+            
+            <div className="flex items-center gap-3 w-full lg:w-auto">
+              {/* Mobile Menu Toggle */}
+              <button 
+                className="lg:hidden text-slate-500 hover:text-slate-800 p-1"
+                onClick={() => setIsMobileSidebarOpen(true)}
+              >
+                <span className="material-symbols-outlined">menu</span>
+              </button>
+
+              {/* Search */}
+              <div className="relative w-full max-w-[360px] flex items-center hidden sm:flex">
+                <span className="material-symbols-outlined absolute left-3.5 text-slate-400 text-[20px]">search</span>
+                <input
+                  className="w-full pl-11 pr-4 py-2.5 bg-[#F9FAFB] rounded-lg text-[14px] text-slate-700 outline-none focus:bg-slate-100 transition-colors"
+                  placeholder="Search bookings, customers..."
+                  type="text"
+                />
+              </div>
             </div>
 
             {/* Right side header */}
-            <div className="flex items-center gap-6">
+            <div className="flex items-center gap-4 sm:gap-6 shrink-0">
+              <button className="sm:hidden text-slate-500 hover:text-slate-700">
+                <span className="material-symbols-outlined text-[24px]">search</span>
+              </button>
+
               {/* Notification icon */}
               <button className="text-slate-500 hover:text-slate-700 relative">
                 <span className="material-symbols-outlined text-[24px]">notifications</span>
@@ -78,15 +110,15 @@ export default function AdminLayout({ children }) {
               </button>
               
               {/* Divider */}
-              <div className="h-8 w-[1px] bg-slate-200"></div>
+              <div className="h-8 w-[1px] bg-slate-200 hidden sm:block"></div>
 
               {/* Profile */}
               <div className="flex items-center gap-3 cursor-pointer group">
-                <div className="text-right">
+                <div className="text-right hidden sm:block">
                   <p className="text-[14px] font-bold text-slate-900 group-hover:text-[#1A44F2] transition-colors leading-tight">Alex Rivers</p>
                   <p className="text-[12px] text-slate-500 mt-0.5">Operation Manager</p>
                 </div>
-                <div className="size-10 rounded-full overflow-hidden bg-slate-200 shadow-sm">
+                <div className="size-9 sm:size-10 rounded-full overflow-hidden bg-slate-200 shadow-sm">
                   <img
                     alt="Alex Rivers"
                     className="w-full h-full object-cover"
@@ -99,14 +131,14 @@ export default function AdminLayout({ children }) {
 
           {/* Main Content Scrollable */}
           <main className="flex-1 overflow-y-auto">
-            <div className="p-8 pb-24">
+            <div className="p-4 sm:p-8 pb-24">
               {children}
             </div>
           </main>
           
           {/* Floating Action Menu Button (from screenshot) */}
-          <button className="fixed bottom-8 right-8 z-50 size-14 bg-[#1A44F2] hover:bg-blue-700 text-white rounded-2xl flex items-center justify-center shadow-[0_8px_16px_rgba(26,68,242,0.3)] transition-transform hover:scale-105">
-            <span className="material-symbols-outlined text-[30px]">menu</span>
+          <button className="fixed bottom-6 right-6 sm:bottom-8 sm:right-8 z-30 size-12 sm:size-14 bg-[#1A44F2] hover:bg-blue-700 text-white rounded-2xl flex items-center justify-center shadow-[0_8px_16px_rgba(26,68,242,0.3)] transition-transform hover:scale-105">
+            <span className="material-symbols-outlined text-[28px] sm:text-[30px]">menu</span>
           </button>
         </div>
       </div>

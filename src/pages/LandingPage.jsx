@@ -20,8 +20,8 @@ export default function LandingPage() {
                     <div className="relative z-10 w-full max-w-5xl px-6 text-center flex flex-col items-center gap-10 mt-16">
                         <div className="flex flex-col gap-4">
                             <h1
-                                className="text-white text-5xl md:text-6xl lg:text-[76px] xl:text-[84px] font-black leading-tight tracking-tight drop-shadow-2xl">
-                                Experience the Essence of <br /> Thai Luxury
+                                className="text-white text-4xl sm:text-5xl md:text-6xl lg:text-[76px] xl:text-[84px] font-black leading-tight tracking-tight drop-shadow-2xl">
+                                Experience the Essence of <br className="hidden sm:block" /> Thai Luxury
                             </h1>
                             <p className="text-white text-lg md:text-xl font-bold max-w-2xl mx-auto drop-shadow-md pb-6 leading-relaxed">
                                 Bespoke journeys and white-glove service across the Land of Smiles.
@@ -49,7 +49,7 @@ export default function LandingPage() {
                                     placeholder="Guests" type="text" />
                             </div>
                             <button
-                                className="w-full md:w-auto bg-[#1a44f2] text-white font-bold px-10 py-4 mx-1 rounded hover:bg-blue-700 transition-colors flex items-center justify-center gap-2">
+                                className="w-full md:w-auto bg-[#1a44f2] text-white font-bold px-10 py-4 mx-1 md:mx-0 mt-2 md:mt-0 rounded hover:bg-blue-700 transition-colors flex items-center justify-center gap-2">
                                 <span className="material-symbols-outlined text-[20px] font-bold">search</span>
                                 <span>Search</span>
                             </button>
@@ -57,7 +57,7 @@ export default function LandingPage() {
                     </div>
                 </div>
                 {/* About Kasorn */}
-                <section className="max-w-7xl mx-auto px-6 py-24">
+                <section className="max-w-7xl mx-auto px-4 sm:px-6 py-16 md:py-24">
                     <div className="flex flex-col lg:flex-row gap-16 items-center">
                         <div className="flex-1 space-y-6">
                             <div
@@ -117,8 +117,8 @@ export default function LandingPage() {
                     </div>
                 </section>
                 {/* Featured Experiences */}
-                <section className="bg-slate-50 dark:bg-slate-900/50 py-24">
-                    <div className="max-w-7xl mx-auto px-6">
+                <section className="bg-slate-50 dark:bg-slate-900/50 py-16 md:py-24">
+                    <div className="max-w-7xl mx-auto px-4 sm:px-6">
                         <div className="flex justify-between items-end mb-12">
                             <div className="space-y-2">
                                 <h2 className="text-slate-900 dark:text-white text-3xl md:text-4xl font-black">Featured
@@ -210,9 +210,9 @@ export default function LandingPage() {
                     </div>
                 </section>
                 {/* CTA Section */}
-                <section className="py-24 max-w-7xl mx-auto px-6">
+                <section className="py-16 md:py-24 max-w-7xl mx-auto px-4 sm:px-6">
                     <div
-                        className="relative rounded-3xl overflow-hidden bg-primary p-12 md:p-24 flex flex-col items-center text-center gap-8">
+                        className="relative rounded-[2rem] overflow-hidden bg-primary p-8 md:p-16 lg:p-24 flex flex-col items-center text-center gap-6 md:gap-8">
                         <div className="absolute top-0 right-0 p-20 opacity-10">
                             <span className="material-symbols-outlined text-[300px]">auto_awesome</span>
                         </div>
