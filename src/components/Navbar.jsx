@@ -5,12 +5,10 @@ export default function Navbar() {
   const location = useLocation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
 
-  // Reusable Nav Links Component
   const NavLinks = ({ mobile }) => (
     <>
       <Link onClick={() => setIsMobileMenuOpen(false)} className={`text-sm font-bold transition-colors hover:text-primary ${location.pathname === '/' ? 'text-primary' : 'text-slate-600 dark:text-slate-300'} ${mobile ? 'block py-3 border-b border-slate-100 dark:border-slate-800' : ''}`} to="/">Home</Link>
       <Link onClick={() => setIsMobileMenuOpen(false)} className={`text-sm font-bold transition-colors hover:text-primary ${location.pathname === '/tours' ? 'text-primary' : 'text-slate-600 dark:text-slate-300'} ${mobile ? 'block py-3 border-b border-slate-100 dark:border-slate-800' : ''}`} to="/tours">Destinations</Link>
-      <Link onClick={() => setIsMobileMenuOpen(false)} className={`text-sm font-bold transition-colors hover:text-primary ${location.pathname.startsWith('/tour/') ? 'text-primary' : 'text-slate-600 dark:text-slate-300'} ${mobile ? 'block py-3 border-b border-slate-100 dark:border-slate-800' : ''}`} to="/tours">Tours</Link>
       <Link onClick={() => setIsMobileMenuOpen(false)} className={`text-sm font-bold transition-colors hover:text-primary ${location.pathname === '/luxury-concierge' ? 'text-primary' : 'text-slate-600 dark:text-slate-300'} ${mobile ? 'block py-3 border-b border-slate-100 dark:border-slate-800' : ''}`} to="/luxury-concierge">Luxury Concierge</Link>
       <Link onClick={() => setIsMobileMenuOpen(false)} className={`text-sm font-bold transition-colors hover:text-primary ${location.pathname === '/about' ? 'text-primary' : 'text-slate-600 dark:text-slate-300'} ${mobile ? 'block py-3 border-b border-slate-100 dark:border-slate-800' : ''}`} to="/about">About</Link>
     </>
@@ -60,9 +58,9 @@ export default function Navbar() {
                         Admin
                     </Link>
                     
-                    <div className="h-9 w-9 md:h-10 md:w-10 overflow-hidden rounded-full flex-shrink-0 cursor-pointer hover:ring-2 ring-slate-100 transition-all ml-1">
+                    <Link to="/profile" className="h-9 w-9 md:h-10 md:w-10 overflow-hidden rounded-full flex-shrink-0 cursor-pointer hover:ring-2 ring-slate-100 transition-all ml-1">
                         <img className="h-full w-full object-cover" alt="Profile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAGkJzoipuoEFpgtxjfPGCRtfPG_hAT-kJ2a1VgGmp25lqJ2rRw7MK03dLLcakhtqQJnGale6E1_4B8-pSWaErUues64yno1tKbz80RKUJJ9_pJt0BSVLoPwrPDYEuWQ6tA7OXKm6OTzpOgnOOI2u430ayVd8UDwbmPEM3s07chE8tgBl8AE21MWJOyhsQQNoFnhBSOAXJUv6NOCKWRSNnPxk1abv2HTLeJfCluAeOQGTW1YaE5juH2AWACcvsAzm4AKXn-ZzV-wVs" />
-                    </div>
+                    </Link>
                 </div>
             </div>
         </div>

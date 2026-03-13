@@ -10,6 +10,8 @@ import AdminCustomers from './pages/AdminCustomers';
 import AdminAnalytics from './pages/AdminAnalytics';
 import LuxuryConcierge from './pages/LuxuryConcierge';
 import AboutUs from './pages/AboutUs';
+import UserProfile from './pages/UserProfile';
+import Booking from './pages/Booking';
 
 function AdminRoute({ element }) {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -75,8 +77,10 @@ function App() {
         <Route path="/" element={<LandingPage />} />
         <Route path="/tours" element={<TourListings />} />
         <Route path="/tour/:id" element={<TourDetails />} />
+        <Route path="/book/:id" element={<Booking />} />
         <Route path="/luxury-concierge" element={<LuxuryConcierge />} />
         <Route path="/about" element={<AboutUs />} />
+        <Route path="/profile" element={<UserProfile />} />
         <Route path="/admin" element={<AdminRoute element={<AdminDashboard />} />} />
         <Route path="/admin/bookings" element={<AdminRoute element={<AdminBookings />} />} />
         <Route path="/admin/customers" element={<AdminRoute element={<AdminCustomers />} />} />

@@ -28,7 +28,7 @@ export default function AdminLayout({ children }) {
         <aside className={`fixed lg:static inset-y-0 left-0 z-50 w-[260px] flex flex-col bg-white border-r border-slate-200 shrink-0 transition-transform duration-300 ease-in-out ${isMobileSidebarOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}`}>
           <div className="h-[72px] px-6 flex items-center justify-between gap-3 shrink-0">
             <div className="flex items-center gap-3">
-              <Link to="/admin" className="size-10 bg-[#1A44F2] rounded-[10px] flex items-center justify-center text-white">
+              <Link to="/" className="size-10 bg-[#1A44F2] rounded-[10px] flex items-center justify-center text-white hover:bg-blue-700 transition-colors" title="Go to Customer Site">
                 <span className="material-symbols-outlined text-[20px]">explore</span>
               </Link>
               <div>
